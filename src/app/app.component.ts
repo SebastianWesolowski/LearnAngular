@@ -11,11 +11,29 @@ import { GemCollection } from "./gem";
 export class AppComponent {
   title = "test";
   playlist = {
+    id: 1,
     name: "test",
     track: 12,
     collor: "#ff00ff",
     favorite: true
   };
+
+  playlistArr = [
+    {
+      id: 1,
+      name: "test",
+      track: 12,
+      collor: "#ff00ff",
+      favorite: true
+    },
+    {
+      id: 2,
+      name: "test",
+      track: 12,
+      collor: "#ff00ff",
+      favorite: true
+    }
+  ];
 
   gemList = [
     new GemCollection(1, "normal", "basic cristal", 20),

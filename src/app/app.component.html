@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let gem of gemList">
+            <tr *ngFor="let gem of gemList" class="button" (click)="onSave($event)">
               <td>{{ gem.id }}</td>
               <td>{{ gem.type }}</td>
               <td>{{ gem.name }}</td>
@@ -31,40 +31,74 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Playlista</h4>
-            <p class="card-text">Opis playlisty</p>
-          </div>
-
-          <div class="card-body">
-            <div class="form-group">
-              <label>Name:</label>
-              <input type="text" [value]="playlist.name" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Tracks:</label>
-              <input type="text" [value]="playlist.track" disabled class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Color:</label>
-              <input type="color" [value]="playlist.collor"> </div>
-            <div class="form-group">
-              <label>
-                <input type="checkbox" [checked]="playlist.favorite"> Favourite</label>
-            </div>
-
-            <div class="form-group">
-              <button class="btn btn-success float-xs-right" (click)="onSave($event)">Zapisz</button>
-            </div>
-          </div>
-        </div>
-
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th> # </th>
+              <th> Nazwa </th>
+              <th> Utworów </th>
+              <th> Ulubiona </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>{{ playlist.name }}</td>
+              <td>23</td>
+              <td><label>
+                  <input type="checkbox" [checked]="playlist.favorite"
+                    (change)="playlist.favorite = $event.target.checked">
+                  Favourite: </label>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>AN g hits</td>
+              <td>22</td>
+              <td>
+                false
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <!-- </div> -->
-  </div>
+    <div class="row mt-1"></div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Playlista</h4>
+          <p class="card-text">Opis playlisty</p>
+        </div>
 
-  <router-outlet></router-outlet>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" [value]="playlist.name" (keyup)="playlist.name = $event.target.value"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Tracks:</label>
+            <input type="text" [value]="playlist.track" disabled class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Color:</label>
+            <input type="color" [value]="playlist.collor" (change)="playlist.color = $event.target.value"> </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" [checked]="playlist.favorite" (change)="playlist.favorite = $event.target.checked">
+              Favourite</label>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-success float-xs-right" (click)="onSave($event)">Zapisz</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- </div> -->
+</div>
+
+<router-outlet></router-outlet>
