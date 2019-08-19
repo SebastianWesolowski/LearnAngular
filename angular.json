@@ -26,6 +26,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
+              "src/theme.scss",
               "node_modules/bootstrap/scss/bootstrap-grid.scss",
               "node_modules/bootstrap/scss/bootstrap-reboot.scss",
               "node_modules/bootstrap/scss/bootstrap.scss"

@@ -1,0 +1,22 @@
+{
+  "editor.formatOnSaveTimeout": 750,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.cursorBlinking": "smooth",
+  "editor.detectIndentation": true,
+  "editor.fontLigatures": true,
+  "html.format.enable": false,
+  "editor.formatOnPaste": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\r\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/LICENSE": true,
+    "**/yarn.lock": true,
+    "**/.eslintrc": true,
+    "**/.editorconfig": true
+  }
+}
