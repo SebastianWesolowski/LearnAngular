@@ -45,6 +45,7 @@ export class AppComponent {
     new GemCollection(4, 'epic', 'epic cristal', 50)
   ];
   selected = false;
+
   getBorderStyle(playlist) {
     console.log(typeof playlist);
     return {

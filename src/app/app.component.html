@@ -40,10 +40,10 @@
           <tbody>
             <tr
               class="playlist-row"
-              [ngClass]="{ 'table-active': selected == playlist }"
+              [ngClass]="{ 'table-active': selected == true }"
               [style.fontSize.rem]="size"
               [ngStyle]="getBorderStyle(playlist)"
-              (click)="selected = playlist"
+              (click)="selected = true"
             >
               <td>1</td>
               <td>{{ playlist.name }}</td>
