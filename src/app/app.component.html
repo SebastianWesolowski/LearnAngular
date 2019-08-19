@@ -1,75 +1,57 @@
-<div style="text-align:center">
-  <div class="container">
-    <h1>
-      {{ title }}
-    </h1>
-    <style>
-      .playlist-row {
-        border-bottom: 2px solid transparent;
-      }
-    </style>
-    <div class="row mt-1">
-      <div class="col">
-        <!-- <table class="table table-striped">
-          <thead>
-            <tr>
-              <th> # </th>
-              <th> type </th>
-              <th> name </th>
-              <th> power </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let gem of gemList" class="button" (click)="onSave($event)">
-              <td>{{ gem.id }}</td>
-              <td>{{ gem.type }}</td>
-              <td>{{ gem.name }}</td>
-              <td>{{ gem.power }}</td>
-            </tr>
-          </tbody>
-        </table> -->
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nazwa</th>
-              <th>Utworów</th>
-              <th>Ulubiona</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="playlist-row"
-              [ngClass]="{ 'table-active': selected == true }"
-              [style.fontSize.rem]="size"
-              [ngStyle]="getBorderStyle(playlist)"
-              (click)="selected = true"
-            >
-              <td>1</td>
-              <td>{{ playlist.name }}</td>
-              <td>23</td>
-              <td>
-                <label>
-                  <input type="checkbox" [(ngModel)]="playlist.favorite" />
-                  Favourite:
-                </label>
-              </td>
-            </tr>
-            <tr
-              (click)="selected = null"
-              [ngClass]="{ 'table-active': selected == null }"
-            >
-              <td>2</td>
-              <td>AN g hits</td>
-              <td>22</td>
-              <td>false</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="container">
+  <div class="row mt-1">
+    <div class="col">
+      <h1>
+        {{ title }}
+      </h1>
     </div>
-    <div class="row mt-1"></div>
-    <div * class="col">
+  </div>
+  <style>
+    .playlist-row {
+      border-bottom: 2px solid transparent;
+    }
+  </style>
+  <div class="row mt-1">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Utworów</th>
+            <th>Ulubiona</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="playlist-row"
+            [ngClass]="{ 'table-active': selected == playlist }"
+            [ngStyle]="{ borderBottomColor: playlist.color }"
+            (click)="selected = playlist"
+          >
+            <td>1</td>
+            <td>{{ playlist.name }}</td>
+            <td>23</td>
+            <td>
+              <label
+                ><input type="checkbox" [(ngModel)]="playlist.favourite" />
+                Ulubiona</label
+              >
+            </td>
+          </tr>
+          <tr
+            (click)="selected = null"
+            [ngClass]="{ 'table-active': selected == null }"
+          >
+            <td>2</td>
+            <td>Angular Greatest Hits</td>
+            <td>2</td>
+            <td>false</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Playlista</h4>
@@ -78,7 +60,7 @@
 
         <div class="card-body">
           <div class="form-group">
-            <label>Name:</label>
+            <label>Nazwa:</label>
             <input
               type="text"
               [(ngModel)]="playlist.name"
@@ -86,29 +68,28 @@
             />
           </div>
           <div class="form-group">
-            <label>Tracks:</label>
+            <label>Utwory:</label>
             <input
               type="text"
-              [value]="playlist.track + ' utory'"
+              [value]="playlist.tracks + ' utwory'"
               disabled
               class="form-control"
             />
           </div>
           <div class="form-group">
-            <label>Color:</label>
+            <label>Kolor:</label>
             <input type="color" [(ngModel)]="playlist.color" />
           </div>
           <div class="form-group">
-            <label>
-              <input type="checkbox" [(ngModel)]="playlist.favorite" />
-              Favourite</label
+            <label
+              ><input type="checkbox" [(ngModel)]="playlist.favourite" />
+              Ulubiona</label
             >
           </div>
-
           <div class="form-group">
             <button
               class="btn btn-success float-xs-right"
-              (click)="onSave($event)"
+              (click)="save($event)"
             >
               Zapisz
             </button>
@@ -118,5 +99,3 @@
     </div>
   </div>
 </div>
-
-<router-outlet></router-outlet>
