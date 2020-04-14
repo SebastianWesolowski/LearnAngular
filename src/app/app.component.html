@@ -27,21 +27,14 @@
             class="playlist-row"
             [ngClass]="{ 'table-active': selected == playlist }"
             (click)="selected = playlist"
-            [ngStyle]="{
-              borderBottomColor: playlist.color,
-              borderBottomWidth: '4px'
-            }"
+            [ngStyle]="{ borderBottomColor: playlist.color }"
           >
             <td>1</td>
             <td>{{ playlist.name }}</td>
             <td>23</td>
             <td>
               <label
-                ><input
-                  type="checkbox"
-                  [checked]="playlist.favourite"
-                  (change)="playlist.favourite = $event.target.checked"
-                />
+                ><input type="checkbox" [(ngModel)]="playlist.favourite" />
                 Ulubiona</label
               >
             </td>
@@ -70,8 +63,7 @@
             <label>Nazwa:</label>
             <input
               type="text"
-              [value]="playlist.name"
-              (keyup)="playlist.name = $event.target.value"
+              [(ngModel)]="playlist.name"
               class="form-control"
             />
           </div>
@@ -86,19 +78,11 @@
           </div>
           <div class="form-group">
             <label>Kolor:</label>
-            <input
-              type="color"
-              [value]="playlist.color"
-              (change)="playlist.color = $event.target.value"
-            />
+            <input type="color" [(ngModel)]="playlist.color" />
           </div>
           <div class="form-group">
             <label
-              ><input
-                type="checkbox"
-                [checked]="playlist.favourite"
-                (change)="playlist.favourite = $event.target.checked"
-              />
+              ><input type="checkbox" [(ngModel)]="playlist.favourite" />
               Ulubiona</label
             >
           </div>

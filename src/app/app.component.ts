@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { createElementCssSelector } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
