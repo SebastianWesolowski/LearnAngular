@@ -23,7 +23,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="playlist-row" [style.borderBottomColor]="playlist.color">
+          <tr
+            class="playlist-row"
+            [class.table-active]="selected == playlist"
+            (click)="selected = playlist"
+            [style.borderBottomColor]="playlist.color"
+          >
             <td>1</td>
             <td>{{ playlist.name }}</td>
             <td>23</td>
@@ -38,7 +43,7 @@
               >
             </td>
           </tr>
-          <tr>
+          <tr [class.table-active]="selected == null" (click)="selected = null">
             <td>2</td>
             <td>Angular Greatest Hits</td>
             <td>2</td>

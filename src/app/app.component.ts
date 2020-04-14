@@ -8,6 +8,7 @@ import { createElementCssSelector } from '@angular/compiler';
 })
 export class AppComponent {
   title = 'Witaj w kursie Angular!';
+  selected = null;
 
   playlist = {
     name: 'The best of EduWeb!',
