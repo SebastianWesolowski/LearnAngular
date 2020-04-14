@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { createElementCssSelector } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Witaj w kursie Angular!';
 
-  selected = null;
-
   playlist = {
     name: 'The best of EduWeb!',
     tracks: 23,
@@ -17,9 +16,22 @@ export class AppComponent {
     favourite: true
   };
 
-  save(event) {
-    console.log('Zapisano', event);
-  }
-
   constructor() {}
+
+  createBox(e) {
+    const box = document.createElement('div') as HTMLDivElement;
+    box.classList.add('box');
+    box.style.top = `${e.offsetY}px`;
+    box.style.left = `${e.offsetX}px`;
+    box.style.width = `10px`;
+    box.style.height = `10px`;
+    box.style.position = `absolute`;
+    box.style.background = `#000000`;
+
+    e.toElement.appendChild(box);
+  }
+  onSaveButtonClick(event) {
+    event.toElement.style.position = `relative`;
+    this.createBox(event);
+  }
 }

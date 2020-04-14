@@ -11,12 +11,4 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.eol": "\r\n",
-  "files.exclude": {
-    "**/.git": true,
-    "**/node_modules": true,
-    "**/LICENSE": true,
-    "**/yarn.lock": true,
-    "**/.eslintrc": true,
-    "**/.editorconfig": true
-  }
 }
