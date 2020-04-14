@@ -27,7 +27,10 @@
             class="playlist-row"
             [ngClass]="{ 'table-active': selected == playlist }"
             (click)="selected = playlist"
-            [style.borderBottomColor]="playlist.color"
+            [ngStyle]="{
+              borderBottomColor: playlist.color,
+              borderBottomWidth: '4px'
+            }"
           >
             <td>1</td>
             <td>{{ playlist.name }}</td>
