@@ -31,6 +31,7 @@ export class AppComponent {
 
     e.toElement.appendChild(box);
   }
+
   onSaveButtonClick(event) {
     event.toElement.style.position = `relative`;
     this.createBox(event);
