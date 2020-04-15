@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Witaj w kursie Angular!';
+
   selected = null;
 
-  edited = {
-    name
-  };
+  edited = {};
 
   playlist = {
     name: 'The best of EduWeb!',
@@ -20,23 +19,29 @@ export class AppComponent {
     favourite: true
   };
 
+  mode = 'none';
+
   constructor() {}
 
-  createBox(e) {
-    const box = document.createElement('div') as HTMLDivElement;
-    box.classList.add('box');
-    box.style.top = `${e.offsetY}px`;
-    box.style.left = `${e.offsetX}px`;
-    box.style.width = `10px`;
-    box.style.height = `10px`;
-    box.style.position = `absolute`;
-    box.style.background = `#000000`;
+  onEditButtonClick(playlist) {
+    this.mode = 'edit';
+    this.selected = playlist;
+    this.edited = playlist;
+  }
 
-    e.toElement.appendChild(box);
+  onCreateButtonClick() {
+    this.mode = 'edit';
+    const newPlaylist = {};
+    this.selected = newPlaylist;
+    this.edited = newPlaylist;
+  }
+
+  selectPlaylist(playlist) {
+    this.mode = 'selected';
+    this.selected = playlist;
   }
 
   onSaveButtonClick(event) {
-    event.toElement.style.position = `relative`;
-    this.createBox(event);
+    console.log('Zapisano', event);
   }
 }
