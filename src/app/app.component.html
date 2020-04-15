@@ -19,35 +19,31 @@
         </thead>
         <tbody>
           <tr
+            *ngFor="let playlist of colectionPlaylist; let i = index"
             class="playlist-row"
             [ngClass]="{ 'table-active': selected == playlist }"
             (click)="selectPlaylist(playlist)"
             [ngStyle]="{ borderBottomColor: playlist.color }"
           >
-            <td>1</td>
+            <td>{{ i + 1 }}.</td>
             <td>{{ playlist.name }}</td>
-            <td>23</td>
+            <td>{{ playlist.tracks }}</td>
             <td>
               <label
-                ><input type="checkbox" [(ngModel)]="playlist.favourite" />
-                Ulubiona</label
-              >
+                ><input
+                  type="checkbox"
+                  [(ngModel)]="playlist.favourite"
+                  (click)="$event.stopPropagation()"
+                />
+                Ulubiona
+              </label>
             </td>
-          </tr>
-          <tr
-            [ngClass]="{ 'table-active': selected == null }"
-            (click)="selectPlaylist(null)"
-          >
-            <td>2</td>
-            <td>Angular Greatest Hits</td>
-            <td>2</td>
-            <td>false</td>
           </tr>
         </tbody>
       </table>
       <div class="d-flex flex-row-reverse">
         <button class="btn btn-success" (click)="onCreateButtonClick()">
-          Zapisz
+          Nowa Playlista
         </button>
       </div>
     </div>
@@ -68,7 +64,7 @@
               <div class="d-flex flex-row-reverse">
                 <button
                   class="btn btn-success"
-                  (click)="onEditButtonClick(playlist)"
+                  (click)="onEditButtonClick(selected)"
                 >
                   Edytuj
                 </button>

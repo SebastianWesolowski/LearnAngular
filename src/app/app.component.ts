@@ -12,12 +12,20 @@ export class AppComponent {
 
   edited = {};
 
-  playlist = {
-    name: 'The best of EduWeb!',
-    tracks: 23,
-    color: '#FF0000',
-    favourite: true
-  };
+  colectionPlaylist = [
+    {
+      name: 'The best of EduWeb!',
+      tracks: 23,
+      color: '#FF0000',
+      favourite: true
+    },
+    {
+      name: 'Angular Greatest Hits',
+      tracks: 2,
+      color: '#FFFF00',
+      favourite: false
+    }
+  ];
 
   mode = 'none';
 
@@ -37,8 +45,10 @@ export class AppComponent {
   }
 
   selectPlaylist(playlist) {
-    this.mode = 'selected';
-    this.selected = playlist;
+    if (playlist !== this.selected) {
+      this.mode = 'selected';
+      this.selected = playlist;
+    }
   }
 
   onSaveButtonClick(event) {
