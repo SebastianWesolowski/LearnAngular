@@ -11,7 +11,6 @@
     "oderwat.indent-rainbow",
     "equinusocio.vsc-material-theme",
     "esbenp.prettier-vscode",
-    "shinnn.stylelint"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": ["hookyqr.beautify"]
