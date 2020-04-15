@@ -9,6 +9,10 @@ export class AppComponent {
   title = 'Witaj w kursie Angular!';
   selected = null;
 
+  edited = {
+    name
+  };
+
   playlist = {
     name: 'The best of EduWeb!',
     tracks: 23,
