@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
@@ -49,9 +48,5 @@ export class PlaylistsComponent implements OnInit {
       this.mode = 'selected';
       this.selected = playlist;
     }
-  }
-
-  onSaveButtonClick(event) {
-    console.log('Zapisano', event);
   }
 }

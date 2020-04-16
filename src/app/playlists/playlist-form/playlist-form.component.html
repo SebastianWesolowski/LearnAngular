@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Playlista</h4>
+    <p class="card-text">Opis playlisty</p>
+  </div>
+
+  <div class="card-body">
+    <div class="form-group">
+      <label>Nazwa:</label>
+      <input type="text" [(ngModel)]="playlist.name" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Utwory:</label>
+      <input
+        type="text"
+        [value]="playlist.tracks + ' utwory'"
+        class="form-control"
+        disabled
+      />
+    </div>
+    <div class="form-group">
+      <label>Kolor:</label>
+      <input type="color" [(ngModel)]="playlist.color" />
+    </div>
+    <div class="form-group">
+      <label
+        ><input type="checkbox" [(ngModel)]="playlist.favourite" />
+        Ulubiona</label
+      >
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button class="btn btn-success" (click)="onSaveButtonClick($event)">
+        Zapisz
+      </button>
+    </div>
+  </div>
+</div>

@@ -40,75 +40,30 @@
     </div>
   </div>
   <div class="col">
-    <div class="card">
-      <div [ngSwitch]="mode">
-        <div *ngSwitchDefault>
-          <div class="card-body">
-            <h4 class="card-title">Playlista</h4>
-            <p class="card-text">Wybierz playlistę</p>
-          </div>
-        </div>
-
-        <div *ngSwitchCase="'selected'">
-          <div class="card-body">
-            <h4 class="card-title">Playlista "{{ selected.name }}"</h4>
-            <p class="card-text">Wybrana playlista</p>
-            <div class="d-flex flex-row-reverse">
-              <button
-                class="btn btn-success"
-                (click)="onEditButtonClick(selected)"
-              >
-                Edytuj
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div *ngSwitchCase="'edit'">
-          <div class="card-body">
-            <h4 class="card-title">Playlista</h4>
-            <p class="card-text">Opis playlisty</p>
-          </div>
-
-          <div class="card-body">
-            <div class="form-group">
-              <label>Nazwa:</label>
-              <input
-                type="text"
-                [(ngModel)]="selected.name"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label>Utwory:</label>
-              <input
-                type="text"
-                [value]="selected.tracks + ' utwory'"
-                class="form-control"
-                disabled
-              />
-            </div>
-            <div class="form-group">
-              <label>Kolor:</label>
-              <input type="color" [(ngModel)]="selected.color" />
-            </div>
-            <div class="form-group">
-              <label
-                ><input type="checkbox" [(ngModel)]="selected.favourite" />
-                Ulubiona</label
-              >
-            </div>
-            <div class="d-flex flex-row-reverse">
-              <button
-                class="btn btn-success"
-                (click)="onSaveButtonClick($event)"
-              >
-                Zapisz
-              </button>
-            </div>
+    <div [ngSwitch]="mode">
+      <app-content-card
+        title="Playlista"
+        content="Wybierz playlistę"
+        *ngSwitchDefault
+      ></app-content-card>
+      <div class="card" *ngSwitchCase="'selected'">
+        <div class="card-body">
+          <h4 class="card-title">Playlista "{{ selected.name }}"</h4>
+          <p class="card-text">Wybrana playlista</p>
+          <div class="d-flex flex-row-reverse">
+            <button
+              class="btn btn-success"
+              (click)="onEditButtonClick(selected)"
+            >
+              Edytuj
+            </button>
           </div>
         </div>
       </div>
+      <app-playlist-form
+        *ngSwitchCase="'edit'"
+        [playlist]="selected"
+      ></app-playlist-form>
     </div>
   </div>
 </div>
