@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "prettierProject": {
+    "LearnAngular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,12 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/prettierProject",
+            "outputPath": "dist/LearnAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
@@ -46,7 +46,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -68,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "prettierProject:build"
+            "browserTarget": "LearnAngular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "prettierProject:build:production"
+              "browserTarget": "LearnAngular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "prettierProject:build"
+            "browserTarget": "LearnAngular:build"
           }
         },
         "test": {
@@ -109,16 +108,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "prettierProject:serve"
+            "devServerTarget": "LearnAngular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "prettierProject:serve:production"
+              "devServerTarget": "LearnAngular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "prettierProject"
+  "defaultProject": "LearnAngular",
+  "cli": {
+    "analytics": false
+  }
 }
