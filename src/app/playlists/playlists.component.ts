@@ -30,7 +30,7 @@ export class PlaylistsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onEditButtonClick(playlist) {
+  editPlaylist(playlist) {
     this.mode = 'edit';
     this.selected = playlist;
     this.edited = playlist;

@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { ContentCardComponent } from './playlists/content-card.component';
 import { PlaylistFormComponent } from './playlists/playlist-form/playlist-form.component';
+import { PlaylistListComponent } from './playlists/playlist-list/playlist-list.component';
+import { PlaylistDetailsComponent } from './playlists/playlist-details/playlist-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaylistsComponent,
     ContentCardComponent,
-    PlaylistFormComponent
+    PlaylistFormComponent,
+    PlaylistListComponent,
+    PlaylistDetailsComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],

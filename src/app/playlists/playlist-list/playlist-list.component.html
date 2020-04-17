@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nazwa</th>
+      <th>Utworów</th>
+      <th>Ulubiona</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let playlist of colectionPlaylist; let i = index"
+      class="playlist-row"
+      (click)="selectPlaylist(playlist)"
+      [ngClass]="{ 'table-active': playlist == selected }"
+      [ngStyle]="{ borderBottomColor: playlist.color }"
+    >
+      <td>{{ i + 1 }}.</td>
+      <td>{{ playlist.name }}</td>
+      <td>{{ playlist.tracks }}</td>
+      <td>
+        <label
+          ><input
+            type="checkbox"
+            [(ngModel)]="playlist.favourite"
+            (click)="$event.stopPropagation()"
+          />
+          Ulubiona
+        </label>
+      </td>
+    </tr>
+  </tbody>
+</table>

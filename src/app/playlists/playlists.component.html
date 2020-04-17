@@ -1,38 +1,11 @@
 <div class="row mt-1">
   <div class="col">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nazwa</th>
-          <th>Utworów</th>
-          <th>Ulubiona</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="let playlist of colectionPlaylist; let i = index"
-          class="playlist-row"
-          [ngClass]="{ 'table-active': selected == playlist }"
-          (click)="selectPlaylist(playlist)"
-          [ngStyle]="{ borderBottomColor: playlist.color }"
-        >
-          <td>{{ i + 1 }}.</td>
-          <td>{{ playlist.name }}</td>
-          <td>{{ playlist.tracks }}</td>
-          <td>
-            <label
-              ><input
-                type="checkbox"
-                [(ngModel)]="playlist.favourite"
-                (click)="$event.stopPropagation()"
-              />
-              Ulubiona
-            </label>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <app-playlist-list
+      [colectionPlaylist]="colectionPlaylist"
+      [selected]="selected"
+      (playlistSelected)="selectPlaylist($event)"
+    ></app-playlist-list>
+
     <div class="d-flex flex-row-reverse">
       <button class="btn btn-success" (click)="onCreateButtonClick()">
         Nowa Playlista
@@ -46,20 +19,14 @@
         content="Wybierz playlistę"
         *ngSwitchDefault
       ></app-content-card>
-      <div class="card" *ngSwitchCase="'selected'">
-        <div class="card-body">
-          <h4 class="card-title">Playlista "{{ selected.name }}"</h4>
-          <p class="card-text">Wybrana playlista</p>
-          <div class="d-flex flex-row-reverse">
-            <button
-              class="btn btn-success"
-              (click)="onEditButtonClick(selected)"
-            >
-              Edytuj
-            </button>
-          </div>
-        </div>
-      </div>
+
+      <app-playlist-details
+        [playlist]="selected"
+        (buttonEditPlaylistClick)="editPlaylist($event)"
+        *ngSwitchCase="'selected'"
+      >
+      </app-playlist-details>
+
       <app-playlist-form
         *ngSwitchCase="'edit'"
         [playlist]="selected"
