@@ -14,23 +14,27 @@
   </div>
   <div class="col">
     <div [ngSwitch]="mode">
-      <app-content-card
-        title="Playlista"
-        content="Wybierz playlistę"
-        *ngSwitchDefault
-      ></app-content-card>
+      <app-content-card title="Playlista" *ngSwitchDefault>
+        <p class="card-text">Wybierz playlistę</p>
+      </app-content-card>
 
-      <app-playlist-details
-        [playlist]="selected"
-        (buttonEditPlaylistClick)="editPlaylist($event)"
+      <app-content-card
+        title="Playlista {{ selected.name }}"
         *ngSwitchCase="'selected'"
       >
-      </app-playlist-details>
+        <app-playlist-details
+          [playlist]="selected"
+          (buttonEditPlaylistClick)="editPlaylist($event)"
+        >
+        </app-playlist-details>
+      </app-content-card>
 
-      <app-playlist-form
+      <app-content-card
+        title="Playlista {{ selected.name }} - Edycja"
         *ngSwitchCase="'edit'"
-        [playlist]="selected"
-      ></app-playlist-form>
+      >
+        <app-playlist-form [playlist]="selected"></app-playlist-form>
+      </app-content-card>
     </div>
   </div>
 </div>

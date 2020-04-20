@@ -6,16 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">{{ title }}</h4>
-        <p class="card-text">{{ content }}</p>
+        <!-- <p class="card-text">{{ content }}</p> -->
+        <ng-content></ng-content>
       </div>
     </div>
   `,
-  inputs: ['title', 'content'],
+  inputs: ['title'],
   styles: []
 })
 export class ContentCardComponent implements OnInit {
   @Input() title: string;
-  @Input() content: string;
+
   constructor() {}
 
   ngOnInit(): void {}
