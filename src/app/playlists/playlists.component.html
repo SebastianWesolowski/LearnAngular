@@ -33,7 +33,10 @@
         title="Playlista {{ selected.name }} - Edycja"
         *ngSwitchCase="'edit'"
       >
-        <app-playlist-form [playlist]="selected"></app-playlist-form>
+        <app-playlist-form
+          (saveButtonClick)="savePlaylist($event)"
+          [playlist]="selected"
+        ></app-playlist-form>
       </app-content-card>
     </div>
   </div>

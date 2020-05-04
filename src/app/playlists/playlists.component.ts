@@ -38,7 +38,12 @@ export class PlaylistsComponent implements OnInit {
 
   onCreateButtonClick() {
     this.mode = 'edit';
-    const newPlaylist = {};
+    const newPlaylist = {
+      name: '',
+      tracks: 0,
+      color: '#0000FF',
+      favourite: false
+    };
     this.selected = newPlaylist;
     this.edited = newPlaylist;
   }
@@ -48,5 +53,10 @@ export class PlaylistsComponent implements OnInit {
       this.mode = 'selected';
       this.selected = playlist;
     }
+  }
+
+  savePlaylist(playlist) {
+    this.colectionPlaylist.push(playlist);
+    console.log(playlist);
   }
 }

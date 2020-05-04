@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-playlist-form',
@@ -6,12 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./playlist-form.component.scss']
 })
 export class PlaylistFormComponent implements OnInit {
+  @Output() saveButtonClick = new EventEmitter();
+
   @Input() playlist;
   constructor() {}
 
   ngOnInit(): void {}
 
-  onSaveButtonClick(event) {
-    console.log('Zapisano', event);
+  savePlaylist(playlist) {
+    const copy = Object.assign({}, playlist);
+    this.saveButtonClick.emit(copy);
   }
 }
