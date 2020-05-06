@@ -1,3 +1,4 @@
+import { PlaylistService } from './playlist.service';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-playlists',
@@ -5,35 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlists.component.scss']
 })
 export class PlaylistsComponent implements OnInit {
-  selected = null;
+  private _edited = {};
 
-  edited = {};
+  public selected = null;
+  public colectionPlaylist = [];
+  public mode = 'none';
 
-  colectionPlaylist = [
-    {
-      name: 'The best of EduWeb!',
-      tracks: 23,
-      color: '#FF0000',
-      favourite: true
-    },
-    {
-      name: 'Angular Greatest Hits',
-      tracks: 2,
-      color: '#FFFF00',
-      favourite: false
-    }
-  ];
-
-  mode = 'none';
-
-  constructor() {}
+  constructor(private _playlistService: PlaylistService) {
+    this.colectionPlaylist = this._playlistService.getPlaylistColection();
+  }
 
   ngOnInit(): void {}
 
   editPlaylist(playlist) {
     this.mode = 'edit';
     this.selected = playlist;
-    this.edited = playlist;
+    this._edited = playlist;
   }
 
   onCreateButtonClick() {
@@ -45,7 +33,7 @@ export class PlaylistsComponent implements OnInit {
       favourite: false
     };
     this.selected = newPlaylist;
-    this.edited = newPlaylist;
+    this._edited = newPlaylist;
   }
 
   selectPlaylist(playlist) {
