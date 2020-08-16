@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlists.component.scss']
 })
 export class PlaylistsComponent implements OnInit {
-  private _edited = {};
+  public edited = {};
 
   public selected = null;
   public colectionPlaylist = [];
@@ -21,7 +21,7 @@ export class PlaylistsComponent implements OnInit {
   editPlaylist(playlist) {
     this.mode = 'edit';
     this.selected = playlist;
-    this._edited = playlist;
+    this.edited = Object.assign({}, playlist);
   }
 
   onCreateButtonClick() {
@@ -33,10 +33,11 @@ export class PlaylistsComponent implements OnInit {
       favourite: false
     };
     this.selected = newPlaylist;
-    this._edited = newPlaylist;
+    this.edited = Object.assign({}, newPlaylist);
   }
 
   selectPlaylist(playlist) {
+    console.log('select,', playlist);
     if (playlist !== this.selected) {
       this.mode = 'selected';
       this.selected = playlist;
@@ -44,7 +45,15 @@ export class PlaylistsComponent implements OnInit {
   }
 
   savePlaylist(playlist) {
-    this.colectionPlaylist.push(playlist);
-    console.log(playlist);
+    if (playlist.id) {
+      const index = this.colectionPlaylist.findIndex(oldPlaylist => {
+        return oldPlaylist.id === playlist.id;
+      });
+      this.colectionPlaylist.splice(index, 1, playlist);
+    } else {
+      playlist.id = Date.now();
+      this.colectionPlaylist.push(playlist);
+    }
+    this.mode = 'none';
   }
 }
