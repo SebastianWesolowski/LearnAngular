@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { PlaylistService } from './playlist.service';
+import { PlaylistService } from './service/playlist.service';
 
 import { PlaylistsComponent } from './playlists.component';
 import { ContentCardComponent } from './content-card.component';
@@ -20,7 +20,6 @@ import { PlaylistDetailsComponent } from './playlist-details/playlist-details.co
   ],
   imports: [CommonModule, FormsModule],
   exports: [PlaylistsComponent],
-  // providers: [{ provide: PlaylistService, useClass: PlaylistService }]
   providers: [PlaylistService]
 })
 export class PlaylistModule {}

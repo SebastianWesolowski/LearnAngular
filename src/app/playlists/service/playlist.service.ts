@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { IPlayList } from '../interface/i-playlist';
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
-  colectionPlaylist = [
+  PlaylistColection: IPlayList[] = [
     {
       id: 1,
       name: 'The best of EduWeb!',
@@ -21,8 +21,5 @@ export class PlaylistService {
     }
   ];
 
-  getPlaylistColection() {
-    return this.colectionPlaylist;
-  }
-  constructor() {}
+  getPlaylistColection = () => this.PlaylistColection;
 }

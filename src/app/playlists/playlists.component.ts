@@ -1,4 +1,4 @@
-import { PlaylistService } from './playlist.service';
+import { PlaylistService } from './service/playlist.service';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-playlists',
@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistsComponent implements OnInit {
   public edited = {};
-
   public selected = null;
   public colectionPlaylist = [];
   public mode = 'none';
